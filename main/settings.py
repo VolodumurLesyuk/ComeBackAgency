@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 from pathlib import Path
+from datetime import timedelta
 
 from decouple import config
 
@@ -43,10 +44,12 @@ INSTALLED_APPS = [
     # third-party packages
     'rest_framework',
     'drf_spectacular',
+    'rest_framework_simplejwt',
 
     # local app
     'author',
     'book',
+    'customer',
 ]
 
 MIDDLEWARE = [
@@ -139,5 +142,15 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+            'rest_framework_simplejwt.authentication.JWTAuthentication',
+        ),
     'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
 }
+
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=60),
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
+}
+
+AUTH_USER_MODEL = 'customer.Customer'

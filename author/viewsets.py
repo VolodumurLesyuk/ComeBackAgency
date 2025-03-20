@@ -1,5 +1,7 @@
 from rest_framework import viewsets
 from drf_spectacular.utils import extend_schema, extend_schema_view
+from rest_framework.permissions import IsAuthenticated
+from rest_framework_simplejwt.authentication import JWTAuthentication
 
 from author.models import Author
 from author.serializers import AuthorSerializer
@@ -15,4 +17,6 @@ from author.serializers import AuthorSerializer
 class AuthorViewSet(viewsets.ModelViewSet):
     queryset = Author.objects.all()
     serializer_class = AuthorSerializer
-    
+    authentication_classes = [JWTAuthentication]
+    permission_classes = [IsAuthenticated]
+

@@ -1,5 +1,7 @@
 from rest_framework import viewsets, filters, pagination
 from drf_spectacular.utils import extend_schema, extend_schema_view
+from rest_framework.permissions import IsAuthenticated
+from rest_framework_simplejwt.authentication import JWTAuthentication
 
 from book.models import Book
 from book.paginations import StandardResultsSetPagination
@@ -20,3 +22,5 @@ class BookViewSet(viewsets.ModelViewSet):
     filter_backends = [filters.OrderingFilter, filters.SearchFilter]
     ordering_fields = ['title', 'published_year', 'author']
     search_fields = ['title', 'author__name', 'genre']
+    authentication_classes = [JWTAuthentication]
+    permission_classes = [IsAuthenticated]

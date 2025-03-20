@@ -15,7 +15,7 @@ GENRE_CHOICES = [
 class Book(models.Model):
     uuid = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     title = models.CharField(max_length=255, validators=[validate_non_empty])
-    author = models.ForeignKey(Author, on_delete=models.CASCADE, related_name='books')
+    author = models.ForeignKey(Author, on_delete=models.CASCADE, related_name='books', null=False, blank=False)
     published_year = models.IntegerField(validators=[validate_year])
     genre = models.CharField(max_length=50, choices=GENRE_CHOICES)
 
