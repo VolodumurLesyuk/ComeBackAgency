@@ -1,4 +1,4 @@
-<h1>Come Back Agency testing task</h1>
+<h1>Come Back Agency testing task using Django and Postgres</h1>
 
 Для запуску додатку локально потрібно зробити наступні дії
 
@@ -22,7 +22,8 @@ SECRET_KEY='django_secret_key'
 + Запуск серверу ```python manage.py runserver```
 
 <h1>Documentation</h1>
-# 📚 Book API Documentation
+
+### 📚 Book API Documentation
 
 ### 📌 Overview
 This API allows managing books and authors, supporting CRUD operations, filtering, ordering, JWT authentication, and bulk importing of books.

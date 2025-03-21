@@ -16,7 +16,7 @@ from book.serializers import BookSerializer
     destroy=extend_schema(summary="Delete a book by ID"),
 )
 class BookViewSet(viewsets.ModelViewSet):
-    queryset = Book.objects.all()
+    queryset = Book.objects.select_related('author').all()
     serializer_class = BookSerializer
     pagination_class = StandardResultsSetPagination
     filter_backends = [filters.OrderingFilter, filters.SearchFilter]
