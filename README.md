@@ -120,6 +120,12 @@ Request Body json
 ]
 ```
 
+### 📌 Export Books
+
+```POST /books/export/```
+
+Export books into a JSON array.
+
 <h1>📖 Authors API</h1>
 
 ### 📌 Retrieve All Authors

@@ -93,3 +93,17 @@ class BulkImportBooksView(APIView):
             return Response({"errors": errors}, status=status.HTTP_400_BAD_REQUEST)
 
         return Response({"message": "Books imported successfully!"}, status=status.HTTP_201_CREATED)
+
+
+class ExportBooksView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    @extend_schema(
+        responses={200: BookSerializer(many=True)},
+        summary="Export books to JSON",
+        description="Returns a JSON array with all book records"
+    )
+    def get(self, request, *args, **kwargs):
+        books = Book.objects.all()
+        serializer = BookSerializer(books, many=True)
+        return Response(serializer.data)
