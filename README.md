@@ -18,6 +18,7 @@ SECRET_KEY='django_secret_key'
 ```
 ! використовувати потрібно базу даних postgresql
 + Виконати міграцію бд ```python manage.py migrate```
++ Створити супер-користувача ```python manage.py createsuperuser``` та заповнити відповідні поля
 + Запуск серверу ```python manage.py runserver```
 
 <h1>Documentation</h1>
